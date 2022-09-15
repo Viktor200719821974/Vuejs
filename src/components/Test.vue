@@ -2,7 +2,7 @@
 <h1>test component {{text}}</h1>
   <button @click="logger">log</button>
   <h3 v-for="item of items" :key="item.id">
-    {{item.text}} <button @click="removeItem(item.id)">remove</button>
+    {{item.title}} <button class="test" @click="removeItem(item.id)">remove</button>
   </h3>
 </template>
 
@@ -10,6 +10,9 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Test',
+  unmounted() {
+    console.log('test unmounted');
+  },
   // props: ['text'],
   props: {
     text: {
@@ -35,5 +38,7 @@ export default {
 </script>
 
 <style scoped>
-
+.test {
+  background: green;
+}
 </style>
