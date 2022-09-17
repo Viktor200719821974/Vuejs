@@ -1,9 +1,10 @@
 <template>
-<h1>test component {{text}}</h1>
-  <button @click="logger">log</button>
-  <h3 v-for="item of items" :key="item.id">
-    {{item.title}} <button class="test" @click="removeItem(item.id)">remove</button>
-  </h3>
+  <h2>Test</h2>
+<!--<h1>test component {{text}}</h1>-->
+<!--  <button @click="logger">log</button>-->
+<!--  <h3 v-for="item of items" :key="item.id">-->
+<!--    {{item.title}} <button class="test" @click="removeItem(item.id)">remove</button>-->
+<!--  </h3>-->
 </template>
 
 <script>
@@ -15,10 +16,10 @@ export default {
   },
   // props: ['text'],
   props: {
-    text: {
-      type: String,
-      required: true
-    },
+    // text: {
+    //   type: String,
+    //   required: true
+    // },
     items: {
       type: Array,
       required: true
@@ -38,7 +39,7 @@ export default {
 </script>
 
 <style scoped>
-.test {
-  background: green;
-}
+/*.test {*/
+/*  background: green;*/
+/*}*/
 </style>
