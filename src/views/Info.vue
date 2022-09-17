@@ -4,9 +4,6 @@
     <li v-for="user of users" :key="user.id">
       <router-link :to="`/info/${user.id}`">{{ user.name }}</router-link>
     </li>
-<!--    <li class="li">-->
-<!--      <router-link to="/info/child2">Children2</router-link>-->
-<!--    </li>-->
   </ul>
   <router-view></router-view>
 </template>

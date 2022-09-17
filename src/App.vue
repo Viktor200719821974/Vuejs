@@ -37,109 +37,128 @@
 <!--  <h3 v-for="item of items" :key="item.id">-->
 <!--    {{item.text}} <button @click="removeItem(item.id)">remove</button>-->
 <!--  </h3>-->
-  <ul class="nav">
-    <li class="li">
-      <router-link to="/">Home</router-link>
-    </li>
-    <li class="li">
-      <router-link to="/test">Test</router-link>
-    </li>
-    <li class="li">
-    <router-link to="/info">info</router-link>
-  </li>
-  </ul>
+<!--  <ul class="nav">-->
+<!--    <li class="li">-->
+<!--      <router-link to="/">Home</router-link>-->
+<!--    </li>-->
+<!--    <li class="li">-->
+<!--      <router-link to="/test">Test</router-link>-->
+<!--    </li>-->
+<!--    <li class="li">-->
+<!--    <router-link to="/info">info</router-link>-->
+<!--  </li>-->
+<!--  </ul>-->
+<!--  <h1>Curren count value: {{$store.state.count}}</h1>-->
+<!--  <h1>Curren multiplied count value: {{$store.getters.multipliedCounter}}</h1>-->
+<!--  <button @click="incCounter">inc</button>-->
+  <Header/>
   <router-view></router-view>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue';
 // import Test from './components/Test.vue';
+import Header from './components/Header';
 
 export default {
   name: 'App',
+  components: {
+    Header
+  },
   created() {
-    this.getTodos();
-  },
-  mounted() {
-    console.log('test mounted');
-  },
-  // updated() {
-  //   console.log('test updated');
-  //   this.getTodos();
-  // },
-  watch: {
-    currentPage() {
-      this.getTodos();
-    },
-    inputValue() {
-      console.log(this.inputValue);
-    }
-  },
-  data() {
-    return {
-      inputValue: '',
-      isVisible: true,
-      pageSize: 10,
-      currentPage: 1,
-      // items: [{id: 1, text: 'text1'}, {id: 2, text: 'text2'},{id: 3, text: 'text3'}],
-      items: [],
-      counter: 0,
-      userName: 'Taras',
-      user: {
-        name: 'Vik'
-      }
-    }
+    // console.log(this.$store);
   },
   methods: {
-    filtredItemsMethod() {
-      return  this.items.filter((el, i) => i % 2 === 0);
-    },
-    onSubmit() {
-      // e.preventDefault();
-      console.log(this.inputValue, this.isVisible);
-    },
-    incCounter() {
-      this.counter++;
-      this.user.name+='!';
-    },
-    removeItemFromList(id) {
-      this.items = this.items.filter(item => item.id !== id);
-    },
-    async getTodos() {
-      const limit = this.currentPage * this.pageSize;
-      const response = await fetch(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`);
-      this.items = await response.json();
-    }
-  },
-  components: {
-    // HelloWorld,
-    // Test,
-  },
-  computed: {
-    filtredItems() {
-      return  this.items.filter((el, i) => i % 2 === 0);
+    incCounter () {
+      // this.$store.commit('increment');
+      this.$store.dispatch('increment', 312);
     }
   }
+  // created() {
+  //   this.getTodos();
+  // },
+  // mounted() {
+  //   console.log('test mounted');
+  // },
+  // // updated() {
+  // //   console.log('test updated');
+  // //   this.getTodos();
+  // // },
+  // watch: {
+  //   currentPage() {
+  //     this.getTodos();
+  //   },
+  //   inputValue() {
+  //     console.log(this.inputValue);
+  //   }
+  // },
+  // data() {
+  //   return {
+  //     inputValue: '',
+  //     isVisible: true,
+  //     pageSize: 10,
+  //     currentPage: 1,
+  //     // items: [{id: 1, text: 'text1'}, {id: 2, text: 'text2'},{id: 3, text: 'text3'}],
+  //     items: [],
+  //     counter: 0,
+  //     userName: 'Taras',
+  //     user: {
+  //       name: 'Vik'
+  //     }
+  //   }
+  // },
+  // methods: {
+  //   filtredItemsMethod() {
+  //     return  this.items.filter((el, i) => i % 2 === 0);
+  //   },
+  //   onSubmit() {
+  //     // e.preventDefault();
+  //     console.log(this.inputValue, this.isVisible);
+  //   },
+  //   incCounter() {
+  //     this.counter++;
+  //     this.user.name+='!';
+  //   },
+  //   removeItemFromList(id) {
+  //     this.items = this.items.filter(item => item.id !== id);
+  //   },
+  //   async getTodos() {
+  //     const limit = this.currentPage * this.pageSize;
+  //     const response = await fetch(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`);
+  //     this.items = await response.json();
+  //   }
+  // },
+  // components: {
+  //   // HelloWorld,
+  //   // Test,
+  // },
+  // computed: {
+  //   filtredItems() {
+  //     return  this.items.filter((el, i) => i % 2 === 0);
+  //   }
+  // }
 }
 </script>
 
 <style>
 #app {
-  /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
-  /*-webkit-font-smoothing: antialiased;*/
-  /*-moz-osx-font-smoothing: grayscale;*/
-  /*text-align: center;*/
-  /*color: #2c3e50;*/
-  /*margin-top: 60px;*/
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
-.test {
-  background: red;
+body {
+  margin: 0;
 }
-.nav {
-  display: flex;
-  list-style: none;
-}
-.li {
-  margin: 10px;
-}
+/*.test {*/
+/*  background: red;*/
+/*}*/
+/*.nav {*/
+/*  display: flex;*/
+/*  list-style: none;*/
+/*}*/
+/*.li {*/
+/*  margin: 10px;*/
+/*}*/
 </style>

@@ -21,7 +21,6 @@ export default {
             .then((res) => res.json())
             .then((data) => {
               this.userInfo = data;
-              console.log(data);
             });
       },
       deep: true,
@@ -29,12 +28,6 @@ export default {
     }
   },
   created() {
-    // console.log(this.$route)
-    // fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       this.userInfo = data;
-    //     });
   },
   data () {
     return {
