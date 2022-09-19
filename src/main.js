@@ -26,12 +26,10 @@ const store = createStore({
             state.selectedProduct = null;
         },
         removeFromCart (state, payload) {
-            console.log('remove');
-            console.log(payload.id)
             state.cartItems.filter(el => el.id !== payload.id);
+            state.cartItems = [];
         },
         addToCart (state, payload) {
-            console.log('add')
             state.cartItems.push(payload);
         }
     },

@@ -22,11 +22,10 @@ export default {
   methods: {
     addToCart (product) {
       this.$store.dispatch('toggleItemInCart', product);
+      console.log(this.$store.state.cartItems);
     },
     isProductInCart (productId) {
-      const t = !!this.$store.state.cartItems.find(el => el.id === productId)
-      console.log(t)
-      return t;
+      return !!this.$store.state.cartItems.find(el => el.id === productId);
     }
   }
 }
