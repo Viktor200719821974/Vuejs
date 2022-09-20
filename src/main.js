@@ -26,8 +26,7 @@ const store = createStore({
             state.selectedProduct = null;
         },
         removeFromCart (state, payload) {
-            state.cartItems.filter(el => el.id !== payload.id);
-            state.cartItems = [];
+            state.cartItems = state.cartItems.filter(el => el.id !== payload.id);
         },
         addToCart (state, payload) {
             state.cartItems.push(payload);
